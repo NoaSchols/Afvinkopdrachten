@@ -18,22 +18,30 @@ normaal_seq ='GAGCCATCTATTGCTTACATTTGCTTCTGACACAACTGTGTTCACTAGCAACCTCAAACAGACACC
 # drager is van het sikkelcel allel
 ##We gaan het bestand openen
 bestand = open ("enzymen.txt")
+
 ##We maken een loop zodat elke regel gelezen wordt 
-for i in bestand:
+for i in range(16):
+    #print (bestand)
 
     regel = bestand.readline()
     
     enzym, seq = regel.split()
     
     seq = seq.replace("^","")
-##Als het enzym voorkomt in het sikkelenzym print hij YES, ander no.
+#Als het enzym voorkomt in het sikkelenzym print hij YES, ander no.
     if seq in sikkel_seq :
-        print ("YES!")
-    else :
-        print ("No")
-##Nu kijken we of het enzym in allebei voorkomen of dat hij verschillend voorkomt.
+        print ("Ja ", enzym, "knipt in een sikkel")
+   
+
+
+    if seq in normaal_seq :
+        print ("Ja" , enzym, "knipt in een normaal")
+
+
+#Nu kijken we of het enzym in allebei voorkomen of dat hij verschillend voorkomt.
     if seq in normaal_seq and seq in sikkel_seq:
         print ("Ze knippen allebei!")
+
     elif seq in normaal_seq and not seq in sikkel_seq:
         print ("Hij knipt in de normaal_seq")
     elif seq in sikkel_seq and not seq in normaal_seq:
@@ -41,7 +49,10 @@ for i in bestand:
     else:
         print ("Hij knipt nergens")
 
-##Dat is het einde van mijn gedeelte van het script.
+print ("Het eerste enzym DdeI knipt alleen in de normale sequentie." )
+print ("Het enzym ApaLI,(het zesde enzym) knipt in de normale en de sikkel")
+
+#Dat is het einde van mijn gedeelte van het script.
 
 
 
